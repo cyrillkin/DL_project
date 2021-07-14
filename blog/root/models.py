@@ -1,3 +1,37 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.fields import DateField, TextField
+from django.db.models.fields.files import ImageField
+from django.utils import timezone
 
-# Create your models here.
+
+def user_avatar_path(instance, filename):
+  return f'user_{instance.user.id}/avatar/{filename}'
+
+def user_directory_path(instance, filename):
+  return f'user_{instance.author.id}/photo_adverts/{filename}'
+
+
+class Profile(models.Model):
+  """Модель пользователя"""
+
+  user = models.OneToOneField(
+    User, on_delete=models.CASCADE, related_name='user_profile'
+  )
+  birth_date = models.DateField(blank=True, null=True)
+  avatar = models.ImageField(upload_to=user_avatar_path)
+
+class Advert(models.Model):
+  """Обьявление  пользователя"""
+
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
+  header = models.TextField(max_length=50)
+  description = models.TextField(max_length=500)
+  photo = models.ImageField(upload_to=user_directory_path)
+  date_pub = models.DateTimeField(default=timezone.now)
+
+class Category(models.Model):
+  """Категории объявлений"""
+
+  category_id = models.ForeignKey(User, on_delete=models.CASCADE)
+  name_category = models.TextField(max_length=50)
