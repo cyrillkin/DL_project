@@ -7,17 +7,17 @@
   <title>Объявления</title>
 </head>
 <body>
-{% if adverts %}
+{% if advert %}
   <ul>
     {% for advert in adverts %}
       <li>
-        <a href="/root/adverts/{{ advert.id }}">
+        <!-- <a href="/root/adverts/{{ advert.id }}"> -->
+          <!-- <a href="{% url 'root:advert' adv.id %}"></a> -->
           <p>{{ advert.header }}</p>
           <p>{{ advert.category }}</p>
           <p>{{ advert.description }}</p>
           <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
             style="width: 250px; height: 250px;"></p>
-        </a>
       </li>
     {% endfor %}
   </ul>

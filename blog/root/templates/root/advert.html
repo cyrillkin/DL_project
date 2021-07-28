@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Объявления</title>
+</head>
+<body>
+  <p><b>Объявление</b> #{{ advert.id }}</p>
+  <p><b>Автор объявления:</b> {{ advert.author }}</p>
+  <p><b>Заголовок:</b> {{ advert.header }}</p>
+  <p><b>Категория:</b> {{ advert.category }}</p>
+  <p><b>Описание:</b> {{ advert.description }}</p>
+  <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
+    style="width: 250px; height: 250px;"></p>
+  <p><b>Дата публикации:</b> {{ advert.date_pub }}</p>
+</body>
+</html>
