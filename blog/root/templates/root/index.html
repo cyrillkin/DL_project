@@ -7,12 +7,13 @@
   <title>Объявления</title>
 </head>
 <body>
+<div style = "width: 1000px; margin: 0 auto;">
+
+
 {% if advert %}
-  <ul>
-    {% for advert in adverts %}
-      <li>
-        <!-- <a href="/root/adverts/{{ advert.id }}"> -->
-          <!-- <a href="{% url 'root:advert' adv.id %}"></a> -->
+  <ul style="display: flex; flex-wrap:wrap;">
+    {% for advert in advert %}
+      <li style="padding: 10px">
           <p>{{ advert.header }}</p>
           <p>{{ advert.category }}</p>
           <p>{{ advert.description }}</p>
@@ -21,6 +22,9 @@
       </li>
     {% endfor %}
   </ul>
+{% else %}
+  <p>Объявлений не найдено</p>
 {% endif %}
+</div>
 </body>
 </html>

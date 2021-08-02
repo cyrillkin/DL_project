@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Объявления</title>
+  <title>К</title>
 </head>
 <body>
-{% if cat %}
+
+
+  <p><b>Объявление</b> #{{ category.id }}</p>
+  {% if category %}
   <ul>
-    {% for category in cat %}
-      <li>          
-        <p>{{ category.name }}</p>
+    {% for cat in category %}
+      <li>
+          <p>{{ category.name }}</p>
       </li>
     {% endfor %}
   </ul>

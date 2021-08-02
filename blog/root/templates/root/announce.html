@@ -11,12 +11,12 @@
   <ul>
     {% for advert in adverts %}
       <li>
-        <a href="{% url 'root:advert' advert.id %}">
           <p>{{ advert.header }}</p>
           <p>{{ advert.category }}</p>
           <p>{{ advert.description }}</p>
           <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
             style="width: 250px; height: 250px;"></p><hr>
+          <p><a href="{% url 'root:advert' advert.id %}">Подробнее...</a></p>
       </li>
     {% endfor %}
   </ul>

@@ -1,0 +1,8 @@
+<h1>{{ profile.user_id }}</h1>
+<h2>{{ profile.city }}</h2>
+<h2>{{ profile.description }}</h2>
+<h2>Дата рождения: {{ profile.birth_date }}</h2>
+<h2><img src="{{ profile.avatar.url }}" style="width: 200px; height: 200px"></h2>
+{% if user.id == profile.user.id %}
+  <a href="{% url 'root:profile-edit' profile.user.id %}">Редактировать профиль</a>
+{% endif %}
