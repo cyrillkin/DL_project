@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>К</title>
+  <title></title>
 </head>
 <body>
 
-
-  <p><b>Объявление</b> #{{ category.id }}</p>
   {% if category %}
-  <ul>
-    {% for cat in category %}
-      <li>
-          <p>{{ category.name }}</p>
-      </li>
+    {% for category in category %}
+          <p>{{ category.header }}</p>
+          <p><img src="{{ category.photo.url }}" alt="{{ category.header }}"
+            style="width: 250px; height: 250px;"></p>
+            <p>{{ category.author }}</p>
+          <hr>
     {% endfor %}
-  </ul>
 {% endif %}
+
+
 </body>
 </html>

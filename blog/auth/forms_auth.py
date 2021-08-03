@@ -59,11 +59,15 @@ class SignUpForm(UserCreationForm):
   class Meta:
     model = User
     fields = ('email', 'username')
+    widgets = {
+      'email': forms.TextInput(attrs={'placeholder': 'Email'}),
+      'username': forms.TextInput(attrs={'placeholder': 'Username'})
+    }
 
   def clean_email(self):
     email = self.cleaned_data.get('email')
     username = self.cleaned_data.get('username')
-    if email and User.objects.filter(email=email).exlude(username=username).exists():
+    if email and User.objects.filter(email=email).exclude(username=username).exists():
       raise forms.ValidationError('Email должен быть уникальным')
     return email
 

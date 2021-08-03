@@ -6,6 +6,7 @@ from django.http.response import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView
+from django.views.generic.base import View
 from django.views.generic.edit import UpdateView
 
 from .forms_auth import LoginForm, UpdateProfileForm, SignUpForm
@@ -67,3 +68,27 @@ class EditProfileView(UpdateView):
     def get_success_url(self):
         user_id = self.kwargs['user_id']
         return reverse('root:profile-edit', args=(user_id, ))
+
+
+class SignUpView(View):
+    template_name = 'my_auth/signup.html'
+    signup_form = SignUpForm
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'form': self.signup_form})
+
+    def post(self, request, *args, **kwargs):
+        user_form = self.signup_form(data=request.POST)
+        registered = False
+        context={}
+        if user_form.is_valid():
+            user_form.save()
+            registered = True
+        else:
+            context.update({
+                'form': user_form
+            })
+        context.update({
+            'registered': registered
+            })
+        return render(request, self.template_name, context)

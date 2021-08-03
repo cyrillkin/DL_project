@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Объявления</title>
-</head>
-<body>
-<div style = "width: 1000px; margin: 0 auto;">
+{% extends 'root/base.html' %}
+{% load static %}
 
+{% block title %}
+  <title>Главная</title>
+{% endblock title %}
 
+{% block static %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'root/css/index.css' %}">
+{% endblock static %}
+
+{% block content %}
 {% if advert %}
   <ul style="display: flex; flex-wrap:wrap;">
     {% for advert in advert %}
@@ -25,6 +26,4 @@
 {% else %}
   <p>Объявлений не найдено</p>
 {% endif %}
-</div>
-</body>
-</html>
+{% endblock content %}

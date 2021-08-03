@@ -19,11 +19,11 @@ class Cat(models.Model):
     name = models.TextField(max_length=50)
 
 
-class Sub_cat(models.Model):
-    """Категории объявлений"""
+# class Sub_cat(models.Model):
+#     """Категории объявлений"""
     
-    name = models.ForeignKey(Cat, on_delete=models.CASCADE)
-    sub_name = models.TextField(max_length=50)
+#     name = models.ForeignKey(Cat, on_delete=models.CASCADE)
+#     sub_name = models.TextField(max_length=50)
 
 
 class Adv(models.Model):
@@ -31,7 +31,7 @@ class Adv(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     header = models.TextField(max_length=50)
-    sub_cat = models.ForeignKey(Sub_cat, on_delete=models.CASCADE)
+    name_cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
     description = models.TextField(max_length=500)
     photo = models.ImageField(upload_to=user_directory_path)
     date_pub = models.DateTimeField(default=timezone.now)

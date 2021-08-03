@@ -1,0 +1,36 @@
+{% load static %}
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block title %}
+
+{% endblock title %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block static %}
+  <link rel="stylesheet" href="{% static 'root/css/style.css' %}">
+{% endblock static %}
+</head>
+<body>
+  <header class="header-block">
+    <img class="header-img" src="" alt="">
+    <nav class="header-nav">
+      <ul class="header-list">
+        <li class="header-list-item">..........</li>
+        <li class="header-list-item">..........</li>
+        <li class="header-list-item">............</li>
+        <li class="header-list-item">............</li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-block">
+    {% block content %}
+
+    {% endblock content %} 
+  </main>
+</body>
+<footer class="footer-block">
+
+</footer>

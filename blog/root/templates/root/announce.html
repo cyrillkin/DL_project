@@ -15,8 +15,9 @@
           <p>{{ advert.category }}</p>
           <p>{{ advert.description }}</p>
           <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
-            style="width: 250px; height: 250px;"></p><hr>
+            style="width: 250px; height: 250px;"></p>
           <p><a href="{% url 'root:advert' advert.id %}">Подробнее...</a></p>
+          <hr>
       </li>
     {% endfor %}
   </ul>
