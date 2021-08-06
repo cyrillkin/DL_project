@@ -5,24 +5,25 @@
   <title>Главная</title>
 {% endblock title %}
 
-{% block static %}
-  {{ block.super }}
+{% block style %}
   <link rel="stylesheet" href="{% static 'root/css/index.css' %}">
-{% endblock static %}
+{% endblock style %}
 
 {% block content %}
 {% if advert %}
-  <ul style="display: flex; flex-wrap:wrap;">
-    {% for advert in advert %}
-      <li style="padding: 10px">
-          <p>{{ advert.header }}</p>
-          <p>{{ advert.category }}</p>
-          <p>{{ advert.description }}</p>
-          <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
-            style="width: 250px; height: 250px;"></p>
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="main-content">
+    <ul class="content-list">
+      {% for advert in advert %}
+        <li class="content-item">
+          <p><img class="content-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}"></p>
+            <p class="text text-mark">{{ advert.header }}</p>
+            <p class="text">{{ advert.category }}</p>
+            <p class="text">{{ advert.description }}</p>
+            <p class="text">{{ advert.date_pub }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% else %}
   <p>Объявлений не найдено</p>
 {% endif %}

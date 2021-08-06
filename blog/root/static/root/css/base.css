@@ -1,3 +1,152 @@
 body {
-  border-color: 10px solid aqua;
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+.block-sign {
+  margin-left: 200px;
+}
+
+.header-item {
+  padding: 5px 0;
+}
+
+.header-item-sign {
+  padding: 5px 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* svg */
+
+.social-list {
+  padding-inline-start: 0px;
+  margin: 0;
+
+  display: flex;
+  justify-content: left;
+}
+
+.social-link {
+  margin-right: 10px;
+}
+
+.svg-property {
+  width: 30px;
+  height: 30px;
+}
+
+.social-background {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+
+  fill: rgba(102, 102, 102, 1);
+}
+
+.social-background:hover {
+  fill: rgba(85, 85, 85, 1);
+}
+
+.social-background:active {
+  fill: rgba(74, 74, 74, 1);
+}
+
+.social-icon {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+
+  fill: rgba(255, 255, 255, 1);
+}
+
+.social-icon:hover {
+  fill: rgba(161, 161, 161, 1);
+}
+
+.social-icon:active {
+  fill: rgba(105, 105, 105, 1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-list {
+  display: flex;
+  align-items: center;
+}
+
+.footer-link {
+  padding: 0 5px;
+}
+
+/* BTNs */
+
+.header-link-btn {
+  font-family: inherit;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  background: #000000;
+  border: none;
+
+  min-height: 40px;
+
+  padding: 9px 22px;
+
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.header-link-btn:hover {
+  background-color: #474644;
+}
+
+.header-link-btn:active {
+  background-color: #726e6b;
 }

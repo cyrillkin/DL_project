@@ -12,7 +12,7 @@ class IndexView(ListView):
     context_object_name = 'advert'
 
     def get_queryset(self):
-        return self.model.objects.all().order_by('-date_pub')[:7]
+        return self.model.objects.all().order_by('-date_pub')[:6]
 
 
 class AnnounceView(ListView):
