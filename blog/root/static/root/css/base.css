@@ -4,12 +4,6 @@ body {
 
 a {
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 25px;
-  color: #000;
 }
 
 html {
@@ -26,6 +20,21 @@ ul {
   margin: 0 auto;
 }
 
+.text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+
+  margin: 0;
+}
+
+.text-mark {
+  font-weight: 700;
+}
+
 /* HEADER */
 
 .header-content {
@@ -39,7 +48,7 @@ ul {
 }
 
 .block-sign {
-  margin-left: 200px;
+  margin-left: 150px;
 }
 
 .header-item {
@@ -47,12 +56,18 @@ ul {
 }
 
 .header-item-sign {
-  padding: 5px 0;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-bottom: 15px;
 }
+
+.header-link {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+}
+
 
 /* svg */
 
@@ -120,14 +135,15 @@ ul {
 
 /* BTNs */
 
-.header-link-btn {
-  font-family: inherit;
-  font-weight: bold;
+.link-btn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   font-style: normal;
-  font-size: 16px;
-  line-height: 22px;
-  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
 
+  min-width: 100px;
   text-align: center;
 
   color: #ffffff;
@@ -135,18 +151,16 @@ ul {
   background: #000000;
   border: none;
 
-  min-height: 40px;
-
   padding: 9px 22px;
 
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.header-link-btn:hover {
-  background-color: #474644;
+.link-btn:hover {
+  background: #afaaa1;
 }
 
-.header-link-btn:active {
-  background-color: #726e6b;
+.link-btn:active {
+  background: #afaaa1;
 }

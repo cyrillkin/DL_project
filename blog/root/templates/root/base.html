@@ -1,7 +1,14 @@
-
 {% load static %}
 
-
+{% if cat_index %}
+  <ul>
+    {% for category in cat_index %}
+      <li>          
+        <a href="{% url 'root:category' category.id %}">{{ category.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
 </html>
 <!DOCTYPE html>
@@ -28,13 +35,18 @@
             <ul class="header-list">
               <li class="header-item"><a class="header-link" href="{% url 'root:cat' %}">РАЗДЕЛЫ</a></li>
               <li class="header-item"><a class="header-link" href="{% url 'root:announce' %}">ОБЪЯВЛЕНИЯ</a></li>
-              <li class="header-item"><a class="header-link" href="#">ДОБАВИТЬ ОБЪЯВЛЕНИЕ</a></li>
+              <li class="header-item"><a class="header-link" href="#">РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ</a></li>
             </ul>
           </nav>
           <div class="block-sign">
             <ul class="header-list-sign">
-              <li class="header-item-sign"><a class="header-link-btn" href="{% url 'root:login' %}">ВОЙТИ В АККАУНТ</a></li>
-              <li class="header-item-sign"><a class="header-link-btn" href="{% url 'admin:index' %}">АДМИНКА</a></li>
+              {% if not user.is_authenticated %}
+              <li class="header-item-sign"><a class="link-btn" href="{% url 'root:login' %}">ВОЙТИ В АККАУНТ</a></li>
+              {% else %}
+              <li class="header-item-sign"><p class="text">Привет, <b>{{ user.username }}</b></p></li>
+              <li class="header-item-sign"><a class="header-link" href="{% url 'root:logout' %}">Выйти?</a></li>
+              {% endif %}
+              <li class="header-item-sign"><a class="link-btn" href="{% url 'admin:index' %}">АДМИНКА</a></li>
             </ul>
           </div>
         </div>
@@ -52,7 +64,7 @@
   <div class="container">
     {% block footer %}
       <div class="footer-content">
-        <a class="footer-link" href="#">Контакты:</a>
+        <p class="text-mark">Контакты:</p>
         <ul class="social-list">
           <li class="social-item">
             <a class="footer-link" href="#">

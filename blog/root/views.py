@@ -29,6 +29,7 @@ class AdvertView(DetailView):
     model = Adv
     pk_url_kwarg = 'advert_id'
     template_name = 'root/advert.html'
+    context_object_name = 'advert'
 
     def post(self, request, advert_id, *args, **kwargs):
       advert = get_object_or_404(Adv, id=advert_id)
@@ -57,8 +58,36 @@ class CategoryView(ListView):
     return self.model.objects.all()
 
 
-def category(request, category_id):
-    """ Страница с разделением по категориям """
-    
+# def category(request, category_id):
+#   """ Страница с разделением по категориям """
+
+#   category = Adv.objects.filter(name_cat=Cat.objects.get(id=category_id))
+#   return render(request, 'root/category.html', {'category': category})
+
+
+class CategoryViewAdverts(DetailView):
+  """ Страница с разделением по категориям """
+
+  model = Adv
+  pk_url_kwarg = 'category_id'
+  template_name = 'root/category.html'
+  context_object_name = 'category'
+
+  def post(self, request, category_id, *args, **kwargs):
     category = Adv.objects.filter(name_cat=Cat.objects.get(id=category_id))
-    return render(request, 'root/category.html', {'category': category})
+    return render(
+        request=request,
+        template_name=self.template_name,
+        context={'category': category}
+      )
+
+
+# class CategoryViewIndex(ListView):
+#   """ Представление с разделением по категориям на главной странице"""
+  
+#   model = Cat
+#   template_name = 'root/base.html'
+#   context_object_name = 'cat_index'
+
+#   def get_queryset(self):
+#     return self.model.objects.all()

@@ -34,7 +34,7 @@ class Adv(models.Model):
     name_cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
     description = models.TextField(max_length=500)
     photo = models.ImageField(upload_to=user_directory_path)
-    date_pub = models.DateTimeField(default=timezone.now)
+    date_pub = models.DateTimeField(auto_now_add=True)
 
 
 class Prof(models.Model):

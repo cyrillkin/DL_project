@@ -1,0 +1,37 @@
+.wrapper-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.link-btn-sub {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+
+  width: 150px;
+  text-align: center;
+
+  color: #ffffff;
+
+  background: #000000;
+  border: none;
+
+  padding: 9px 22px;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.link-btn-sub:hover {
+  background: #afaaa1;
+}
+
+.link-btn-sub:active {
+  background: #afaaa1;
+}

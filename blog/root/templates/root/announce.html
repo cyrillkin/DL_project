@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'root/base.html' %}
+{% load static %}
+
+{% block title %}
   <title>Объявления</title>
-</head>
-<body>
+{% endblock title %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'root/css/announce.css' %}">
+{% endblock style %}
+
+{% block content %}
 {% if adverts %}
   <ul>
     {% for advert in adverts %}
@@ -22,5 +25,4 @@
     {% endfor %}
   </ul>
 {% endif %}
-</body>
-</html>
+{% endblock content %}

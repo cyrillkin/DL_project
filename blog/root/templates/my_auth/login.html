@@ -1,21 +1,26 @@
+{% extends 'root/base.html' %}
 {% load static %}
 
+{% block title %}
+  <title>Войти в аккаунт</title>
+{% endblock title %}
 
-  <h3>Войти</h3>
-  <hr>
+{% block style %}
+  <link rel="stylesheet" href="{% static 'root/css/login.css' %}">
+{% endblock style %}
 
-  {% if not user.is_authenticated %}
-  <form method="POST">
-    {% csrf_token %}
-    {% for field in form %}
-      <div>
+{% block content %}
+{% if not user.is_authenticated %}
+<form method="POST" class="wrapper-form">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="form-row">
+      <label class="form-line">
         <p>{{ field }}</p>
-      </div> 
-    {% endfor %}
-    <button type="submit">Войти</button>
+      </label>
+    </div> 
+  {% endfor %}
+    <button class="link-btn-sub" type="submit">Войти</button>
   </form>
-  {% else %}
-    <h3>Привет, {{ user.username }}</h3>
-    <a href="{% url 'root:logout' %}">Выйти</a>
-    <a href="{% url 'root:index' %}">На главную</a>
-  {% endif %}
+{% endif %}
+{% endblock content %}
