@@ -1,0 +1,9 @@
+{% if nav %}
+<ul>
+  {% for category in nav %}
+    <li>          
+      <a href="{% url 'root:category' category.id %}">{{ category.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

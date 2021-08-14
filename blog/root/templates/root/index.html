@@ -1,4 +1,5 @@
 {% extends 'root/base.html' %}
+
 {% load static %}
 
 {% block title %}
@@ -9,7 +10,10 @@
   <link rel="stylesheet" href="{% static 'root/css/index.css' %}">
 {% endblock style %}
 
+
+
 {% block content %}
+{% include 'root/nav.html' %}
 {% if advert %}
   <div class="main-content">
     <ul class="content-list">

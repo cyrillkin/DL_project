@@ -1,11 +1,11 @@
 
 {% if category %}
-  {% for category in category %}
-    <p>{{ category.header }}</p>
-    <p><img src="{{ category.photo.url }}" alt="{{ category.header }}"
-      style="width: 250px; height: 250px;"></p>
-    <p>{{ category.author }}</p>
-    <hr>
+  {% for cat in category %}
+  <p>{{ cat.header }}</p>
+  <p><img src="{{ cat.photo.url }}" alt="{{ cat.header }}"
+    style="width: 250px; height: 250px;"></p>
+  <p>{{ cat.author }}</p>
+  <hr>
   {% endfor %}
 {% else %}
   <p>Разделы не найдены</p>

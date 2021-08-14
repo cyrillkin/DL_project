@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.urls import path
+from django.views.generic import TemplateView
 
 from . import views
 from auth.urls_auth import urlpattens as auth_patterns
@@ -13,13 +14,12 @@ urlpatterns = [
     path('adverts/<int:advert_id>/', views.AdvertView.as_view(), name='advert'),
     path('cat/', views.CategoryView.as_view(), name='cat'),
     path('category/<int:category_id>/', views.CategoryViewAdverts.as_view(), name='category'),
-    # path('', views.CategoryViewIndex.as_view(), name='cat_index'),
-
-    # path('admin/', views.IndexView.as_view(), name='admin'),
-    # path('adverts/<int:advert_id>/', views.advert, name='advert'),
-    # path('cat/', views.cat, name='cat'),
-    # path('cat/', views.SubCategoryView.as_view(), name='s_cat'),
-    # path('category/<int:category_id>/', views.category, name='category'),
+    path('nav/', views.CategoryViewNav.as_view(), name='nav'),
+    
+    path('adv_create/', views.AdvertCreateView.as_view(), name='adv_create'),
+    path('adverts/<int:advert_id>/adv_delete/', views.AdvertDeleteView.as_view(), name='adv_delete'),
+    path('adverts/<int:advert_id>/adv_delete_success/', TemplateView.as_view(template_name='root/delete_success.html'), name='delete-adv-success'),
+    path('adverts/<int:advert_id>/adv_edit/', views.AdvertCreateView.as_view(), name='adv_edit'),
 ]
 
 urlpatterns += auth_patterns

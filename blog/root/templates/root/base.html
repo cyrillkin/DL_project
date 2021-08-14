@@ -1,15 +1,5 @@
+
 {% load static %}
-
-{% if cat_index %}
-  <ul>
-    {% for category in cat_index %}
-      <li>          
-        <a href="{% url 'root:category' category.id %}">{{ category.name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
-
 </html>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +25,9 @@
             <ul class="header-list">
               <li class="header-item"><a class="header-link" href="{% url 'root:cat' %}">РАЗДЕЛЫ</a></li>
               <li class="header-item"><a class="header-link" href="{% url 'root:announce' %}">ОБЪЯВЛЕНИЯ</a></li>
-              <li class="header-item"><a class="header-link" href="#">РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ</a></li>
+              {% if user.is_authenticated %}
+              <li class="header-item"><a class="header-link" href="{% url 'root:adv_create' %}">РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ</a></li>
+              {% endif %}
             </ul>
           </nav>
           <div class="block-sign">

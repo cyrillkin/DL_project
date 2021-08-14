@@ -1,0 +1,10 @@
+{% if adv.author != user %}
+  <h1>Удалить нельзя</h1>
+{% else %}
+  <h1>Удалить?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+  </form>
+  <a href="{% url 'root:advert' adv.id %}">Не надо</a>
+{% endif %}

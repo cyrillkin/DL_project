@@ -1,0 +1,7 @@
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form }}
+<button type="submit">Принять изменения</button>
+</form>
+
+<a href="{% url 'root:adv_delete' advert.id %}">Удалить пост</a>
