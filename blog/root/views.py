@@ -1,11 +1,11 @@
 from django.core.exceptions import PermissionDenied
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View, CreateView, DeleteView, UpdateView
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from .models import Adv, Cat
+from .models import Adv, Cat, Prof
 from .forms import AdvForm
 
 
@@ -115,3 +115,16 @@ class AdvertUpdateView(UpdateView):
     def get_success_url(self):
         advert_id = self.kwargs['adv_id']
         return reverse('root:adv', args=(advert_id, ))
+
+
+class AddRemoveView(View):
+    """ Представление добавления в закладки """
+
+    def post(self, request, advert_id, *args, **kwargs):
+        advert = get_object_or_404(Adv, id=advert_id)
+        if advert in request.advert.bookmark.bookmark.all():
+            request.advert.bookmark.bookmark.remove(advert)
+        else:
+            request.advert.bookmark.bookmark.add(advert)
+        return redirect(request.META.get('HTTP_REFERER'), request)
+

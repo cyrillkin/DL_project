@@ -1,15 +1,15 @@
-.cat-list {
+.nav-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.cat-item {
+.nav-item {
   margin-right: 20px;
   margin-bottom: 30px;
 }
 
-.cat-link {
+.nav-link {
   margin: 0;
 
   background-color: #000;
@@ -27,10 +27,10 @@
   transition: all 0.3s;
 }
 
-.cat-link:hover {
+.nav-link:hover {
   background: #afaaa1;
 }
 
-.cat-link:active {
+.nav-link:active {
   background: #afaaa1;
 }

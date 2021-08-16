@@ -35,7 +35,9 @@ class Adv(models.Model):
     description = models.TextField(max_length=500)
     photo = models.ImageField(upload_to=user_directory_path)
     date_pub = models.DateTimeField(auto_now_add=True)
-
+    bookmark = models.ManyToManyField(
+        User, related_name='bookmark', blank=True
+    )
 
 class Prof(models.Model):
     """Модель пользователя"""
@@ -47,6 +49,3 @@ class Prof(models.Model):
     birth_date = models.DateField(blank=True, null=True)
     city = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    bookmarks = models.ManyToManyField(
-        Adv, related_name='users_bookmark', blank=True
-    )

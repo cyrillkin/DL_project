@@ -11,16 +11,14 @@
 
 {% block content %}
 {% if adverts %}
-  <ul>
+  <ul class="annouce-list">
     {% for advert in adverts %}
-      <li>
-          <p>{{ advert.header }}</p>
-          <p>{{ advert.category }}</p>
-          <p>{{ advert.description }}</p>
-          <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
-            style="width: 250px; height: 250px;"></p>
-          <p><a href="{% url 'root:advert' advert.id %}">Подробнее...</a></p>
-          <hr>
+      <li class="announce-item">
+          <p class="announce-text mark">{{ advert.header }}</p>
+          <p class="announce-text italic">{{ advert.name_cat }}</p>
+          <p class="announce-text">{{ advert.description }}</p>
+          <img class="announce-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
+          <a class="announce-link" href="{% url 'root:advert' advert.id %}">Подробнее...</a>
       </li>
     {% endfor %}
   </ul>

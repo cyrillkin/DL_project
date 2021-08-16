@@ -10,16 +10,26 @@
 {% endblock style %}
 
 {% block content %}
-  <p><b>Объявление</b> #{{ advert.id }}</p>
-  <p><b>Автор объявления:</b> {{ advert.author }}</p>
-  <p><b>Заголовок:</b> {{ advert.header }}</p>
-  <p><b>Категория:</b> {{ advert.name_cat }}</p>
-  <p><b>Описание:</b> {{ advert.description }}</p>
-  <p><img src="{{ advert.photo.url }}" alt="{{ advert.header }}"
-    style="width: 250px; height: 250px;"></p>
-  <p><b>Дата публикации:</b> {{ advert.date_pub }}</p>
-  {% if advert.author == user %}
-    <a href="{% url 'root:adv_edit' advert.id %}">Редактировать объявление</a>
-    <a href="{% url 'root:adv_delete' advert.id %}">Удалить объявление</a>
+  <p class="advert-text">Объявление #{{ advert.id }}</p>
+  <a href="{% url 'root:profile' user.id %}">Автор объявления: {{ advert.author }}</a>
+  <p class="advert-text">Заголовок: {{ advert.header }}</p>
+  <p class="advert-text">Категория: {{ advert.name_cat }}</p>
+  <p class="advert-text">Описание: {{ advert.description }}</p>
+  <img class="advert-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
+  <p class="advert-text">Дата публикации: {{ advert.date_pub }}</p>
+  {% if user.is_authenticated %}
+    {% if advert.author == user %}
+    <a class="advert-link" href="{% url 'root:adv_edit' advert.id %}">Редактировать объявление</a>
+    <a class="advert-link" href="{% url 'root:adv_delete' advert.id %}">Удалить объявление</a>
+    {% else %}
+      <form method="POST" action="{% url 'root:bookmark' advert.id %}">
+      {% csrf_token %}
+      {% if advert.author in user.user_profile.bookmark.all %}
+        <button type="submit">Удалить из закладок</button>
+      {% else %}
+        <button type="submit">Добавить в закладки</button>
+      {% endif %}
+    </form>
+    {% endif %}
   {% endif %}
 {% endblock content %}
