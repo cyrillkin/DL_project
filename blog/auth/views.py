@@ -9,7 +9,7 @@ from django.views.generic import DetailView
 from django.views.generic.base import View
 from django.views.generic.edit import UpdateView
 
-from .forms_auth import LoginForm, UpdateProfileForm, SignUpForm
+from .forms import LoginForm, UpdateProfileForm, SignUpForm
 from root.models import Prof
 
 

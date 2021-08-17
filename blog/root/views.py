@@ -10,7 +10,7 @@ from .forms import AdvForm
 
 
 class IndexView(ListView):
-    """ Последние 7 опубликованных объявлений """
+    """ Последние 6 опубликованных объявлений """
 
     model = Adv
     template_name = 'root/index.html'

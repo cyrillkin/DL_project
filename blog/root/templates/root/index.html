@@ -1,5 +1,6 @@
 {% extends 'root/base.html' %}
 {% load static %}
+{% load nav %}
 
 {% block title %}
   <title>Главная</title>
@@ -10,7 +11,7 @@
 {% endblock style %}
 
 {% block content %}
-{% include 'root/nav.html' %}
+{% nav %}
 {% if advert %}
   <div class="main-content">
     <ul class="content-list">

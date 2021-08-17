@@ -1,5 +1,6 @@
 {% extends 'root/base.html' %}
 {% load static %}
+{% load nav %}
 
 {% block title %}
   <title>Объявления</title>
@@ -10,6 +11,7 @@
 {% endblock style %}
 
 {% block content %}
+{% nav %}
 {% if adverts %}
   <ul class="annouce-list">
     {% for advert in adverts %}

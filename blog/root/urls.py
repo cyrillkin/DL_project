@@ -3,7 +3,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from . import views
-from auth.urls_auth import urlpattens as auth_patterns
+from auth.urls import urlpattens as auth_patterns
 
 
 app_name = 'root'
@@ -14,7 +14,6 @@ urlpatterns = [
     path('adverts/<int:advert_id>/', views.AdvertView.as_view(), name='advert'),
     path('cat/', views.CategoryView.as_view(), name='cat'),
     path('category/<int:category_id>/', views.CategoryViewAdverts.as_view(), name='category'),
-    path('nav/', views.CategoryViewNav.as_view(), name='nav'),
     path('adverts/<int:advert_id>/bookmark/', views.AddRemoveView.as_view(), name='bookmark'),
     
     path('adv_create/', views.AdvertCreateView.as_view(), name='adv_create'),
