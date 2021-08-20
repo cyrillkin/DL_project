@@ -2,27 +2,26 @@
 {% load static %}
 {% load nav %}
 
-{% block title %}
-  <title>Объявления</title>
-{% endblock title %}
-
 {% block style %}
-  <link rel="stylesheet" href="{% static 'root/css/announce.css' %}">
+	<link rel="stylesheet" href="{% static 'root/css/announce.css' %}">
 {% endblock style %}
 
+{% block title %}
+	<title>Объявления</title>
+{% endblock title %}
+
 {% block content %}
-{% nav %}
-{% if adverts %}
-  <ul class="annouce-list">
-    {% for advert in adverts %}
-      <li class="announce-item">
-          <p class="announce-text mark">{{ advert.header }}</p>
-          <p class="announce-text italic">{{ advert.name_cat }}</p>
-          <p class="announce-text">{{ advert.description }}</p>
-          <img class="announce-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
-          <a class="announce-link" href="{% url 'root:advert' advert.id %}">Подробнее...</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
+	{% nav %}
+	{% if adverts %}
+		<ul class="annouce-list">
+		{% for advert in adverts %}
+			<li class="announce-item">
+				<p class="announce-text mark">{{ advert.header }}</p>
+				<p class="announce-text">{{ advert.description }}</p>
+					<img class="announce-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
+					<a class="announce-link" href="{% url 'root:advert' advert.id %}">Подробнее...</a>
+			</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
 {% endblock content %}

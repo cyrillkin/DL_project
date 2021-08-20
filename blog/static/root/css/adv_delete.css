@@ -1,0 +1,82 @@
+.head-delete {
+  display: flex;
+  justify-content: center;
+}
+
+.form-delete {
+  display: flex;
+	justify-content: center;
+}
+
+.submit-delete {
+	margin-bottom: 10px;
+}
+
+.submit-delete {
+	display: flex;
+  justify-content: center;
+
+	margin-bottom: 10px;
+	width: 200px;
+
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	text-align: center;
+
+	color: #ffffff;
+
+	background: #000000;
+	border: none;
+
+	padding: 9px 22px;
+
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.submit-delete:hover {
+  background: #afaaa1;
+}
+
+.submit-delete:active {
+  background: #afaaa1;
+}
+
+.link-delete {
+  display: flex;
+  justify-content: center;
+
+	margin: 0 auto;
+	width: 200px;
+
+	font-family: "Montserrat", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	min-width: 100px;
+	text-align: center;
+
+	color: #ffffff;
+
+	background: #000000;
+	border: none;
+
+	padding: 9px 22px;
+
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.link-delete:hover {
+  background: #afaaa1;
+}
+
+.link-delete:active {
+  background: #afaaa1;
+}

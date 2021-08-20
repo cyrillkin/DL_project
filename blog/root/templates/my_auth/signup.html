@@ -1,15 +1,34 @@
-<h3>Регистрация!</h3>
+{% extends 'root/base.html' %}
+{% load static %}
 
-{% if not registered %}
-<form method="POST">
-  {% csrf_token %}
-  {% for field in form %}
-  <h3>{{ field }}</h3>
-  <h3>{{ field.errors }}</h3>
-  {% endfor %}
-  <button type="submit">Зарегестрироваться</button>
-</form>
-{% else %}
-  <h3>Вы успешно зарегестрированы!</h3>
-  <a href="{% url 'root:login' %}">Войти</a>
-{% endif %}
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/signup.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Регистрация</title>
+{% endblock title %}
+
+{% block content %}
+	{% if not registered %}
+		<h2 class="head-signup">Регистрация!</h2>
+		<form method="POST">
+			<div class="form-label">
+				<div class="form">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field }}
+						{{ field.errors }}
+					{% endfor %}
+						<button class="form-btn" type="submit">Зарегистрироваться</button>
+				</div>
+			</div>
+		</form>
+	{% else %}
+		<div class="signup-info">
+			<h2 class="head-signup">Вы успешно зарегистрированы!</h2>
+			<a class="form-btn" href="{% url 'root:login' %}">Войти</a>
+		</div>
+	{% endif %}
+
+{% endblock content %}

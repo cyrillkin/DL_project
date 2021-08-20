@@ -1,21 +1,22 @@
 {% extends 'root/base.html' %}
 {% load static %}
 
-{% block title %}
-  <title>Разместить объявление</title>
-{% endblock title %}
-
 {% block style %}
-  <link rel="stylesheet" href="{% static 'root/css/adv_create.css' %}">
+	<link rel="stylesheet" href="{% static 'root/css/adv_create.css' %}">
 {% endblock style %}
+
+{% block title %}
+	<title>Разместить объявление</title>
+{% endblock title %}
 
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
-  <div class="form">
-    {% csrf_token %}
-    {{ form }}
-  
-    <button type="submit">Опубликовать</button>
-  </div>
+	<div class="form-label">
+		<div class="form">
+		{% csrf_token %}
+		{{ form }}
+			<button class="form-btn" type="submit">Опубликовать</button>
+		</div>
+	</div>
 </form>
 {% endblock content %}

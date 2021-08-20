@@ -5,7 +5,7 @@ from django.views.generic import ListView, DetailView, View, CreateView, DeleteV
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from .models import Adv, Cat, Prof
+from .models import Adv, Cat, Prof, User
 from .forms import AdvForm
 
 
@@ -128,3 +128,9 @@ class AddRemoveView(View):
             request.advert.bookmark.bookmark.add(advert)
         return redirect(request.META.get('HTTP_REFERER'), request)
 
+
+class FavouriteBookmarkView(View):
+    """ Представление избранных объявлений """
+
+    model = Adv
+    template_name = 'root/fav_book.html'

@@ -1,26 +1,36 @@
 {% extends 'root/base.html' %}
 {% load static %}
 
-{% block title %}
-  <title>Войти в аккаунт</title>
-{% endblock title %}
-
 {% block style %}
-  <link rel="stylesheet" href="{% static 'root/css/login.css' %}">
+	<link rel="stylesheet" href="{% static 'root/css/login.css' %}">
 {% endblock style %}
 
+{% block title %}
+	<title>Войти в аккаунт</title>
+{% endblock title %}
+
 {% block content %}
-{% if not user.is_authenticated %}
-<form method="POST" class="wrapper-form">
-  {% csrf_token %}
-  {% for field in form %}
-    <div class="form-row">
-      <label class="form-line">
-        <p>{{ field }}</p>
-      </label>
-    </div> 
-  {% endfor %}
-    <button class="link-btn-sub" type="submit">Войти</button>
-  </form>
-{% endif %}
+	{% if not user.is_authenticated %}
+		<div class="content">
+			<h2 class="head-login">Войти в аккаунт</h2>
+			<form method="POST">
+				<div class="form-label">
+					<div class="form">
+					{% csrf_token %}
+					{% for field in form %}
+						<label class="form-line">
+						<p>{{ field }}</p>
+						</label>
+					{% endfor %}
+					<div class="submit-block">
+						<button class="link-btn-sub" type="submit">Войти</button>
+					</div>
+				</div> 
+					
+			</div>
+			</form>
+			<a class="login-link" href="{% url 'root:signup' %}">Зарегистрироваться</a>
+			<a class="login-link" href="{% url 'root:password_reset' %}">Забыли пароль?</a>
+		</div>
+	{% endif %}
 {% endblock content %}

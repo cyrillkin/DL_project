@@ -1,12 +1,29 @@
 
-{% if category %}
-  {% for cat in category %}
-  <p>{{ cat.header }}</p>
-  <p><img src="{{ cat.photo.url }}" alt="{{ cat.header }}"
-    style="width: 250px; height: 250px;"></p>
-  <p>{{ cat.author }}</p>
-  <hr>
-  {% endfor %}
-{% else %}
-  <p>Разделы не найдены</p>
-{% endif %}
+{% extends 'root/base.html' %}
+{% load static %}
+{% load nav %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'root/css/index.css' %}">
+{% endblock style %}
+
+{% block title %}
+    <title>Разделы</title>
+{% endblock title %}
+
+{% block content %}
+	{% nav %}
+	{% if category %}
+		{% for cat in category %}
+			<p>{{ cat.header }}</p>
+			<p><img src="{{ cat.photo.url }}" alt="{{ cat.header }}" style="width: 250px; height: 250px;"></p>
+			<p>{{ cat.author }}</p>
+			<hr>
+		{% endfor %}
+		{% else %}
+		<div style="text-align: center;">
+			<p class="text-mark">Разделы не найдены</p>
+		</div>
+  			
+		{% endif %}
+{% endblock content %}

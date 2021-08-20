@@ -1,2 +1,15 @@
-<h1>Пост удалён</h1>
-<a href="{% url 'root:index' %}">Вернуться на главную</a>
+{% extends 'root/base.html' %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/adv_delete.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Удалить объявление</title>
+{% endblock title %}
+
+{% block content %}
+<h2 class="head-delete">Пост удалён</h2>
+<a class="link-delete" href="{% url 'root:index' %}">Вернуться на главную</a>
+{% endblock content %}

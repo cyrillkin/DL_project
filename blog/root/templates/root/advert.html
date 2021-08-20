@@ -1,35 +1,35 @@
 {% extends 'root/base.html' %}
 {% load static %}
 
-{% block title %}
-  <title>{{ advert.header }}</title>
-{% endblock title %}
-
 {% block style %}
-  <link rel="stylesheet" href="{% static 'root/css/advert.css' %}">
+	<link rel="stylesheet" href="{% static 'root/css/advert.css' %}">
 {% endblock style %}
 
+{% block title %}
+	<title>{{ advert.header }}</title>
+{% endblock title %}
+
 {% block content %}
-  <p class="advert-text">Объявление #{{ advert.id }}</p>
-  <a href="{% url 'root:profile' user.id %}">Автор объявления: {{ advert.author }}</a>
-  <p class="advert-text">Заголовок: {{ advert.header }}</p>
-  <p class="advert-text">Категория: {{ advert.name_cat }}</p>
-  <p class="advert-text">Описание: {{ advert.description }}</p>
-  <img class="advert-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
-  <p class="advert-text">Дата публикации: {{ advert.date_pub }}</p>
-  {% if user.is_authenticated %}
-    {% if advert.author == user %}
-    <a class="advert-link" href="{% url 'root:adv_edit' advert.id %}">Редактировать объявление</a>
-    <a class="advert-link" href="{% url 'root:adv_delete' advert.id %}">Удалить объявление</a>
-    {% else %}
-      <form method="POST" action="{% url 'root:bookmark' advert.id %}">
-      {% csrf_token %}
-      {% if advert.author in user.user_profile.bookmark.all %}
-        <button type="submit">Удалить из закладок</button>
-      {% else %}
-        <button type="submit">Добавить в закладки</button>
-      {% endif %}
-    </form>
-    {% endif %}
-  {% endif %}
+	<p class="advert-text">Объявление #{{ advert.id }}</p>
+	<p class="advert-text">Автор объявления: {{ advert.author }}</p>
+	<p class="advert-text">Заголовок: {{ advert.header }}</p>
+	<p class="advert-text">Описание: {{ advert.description }}</p>
+	<img class="advert-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
+	<p class="advert-text">Дата публикации: {{ advert.date_pub }}</p>
+	{% if user.is_authenticated %}
+		{% if advert.author == user %}
+		<div class="block-link">
+			<a class="advert-link" href="{% url 'root:adv_edit' advert.id %}">Редактировать объявление</a>
+			<a class="advert-link" href="{% url 'root:adv_delete' advert.id %}">Удалить объявление</a>
+		</div>
+			<!-- <form method="POST" action="{% url 'root:bookmark' advert.id %}">
+			{% csrf_token %}
+				{% if advert.author in user.user_profile.bookmark.all %}
+					<button type="submit">Удалить из закладок</button>
+				{% else %}
+					<button type="submit">Добавить в закладки</button>
+				{% endif %}
+			</form> -->
+		{% endif %}
+	{% endif %}
 {% endblock content %}

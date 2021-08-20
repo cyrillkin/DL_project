@@ -13,8 +13,9 @@ from root.models import Prof
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={
-        'autofocus': True, 'placeholder': 'username',
-        'class': 'form-control'
+        'autofocus': True,
+        'placeholder': 'Имя пользователя',
+        'class': 'form-input'
     }))
 
     password = forms.CharField(
@@ -22,7 +23,7 @@ class LoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={
             'placeholder': 'Пароль',
-            'class': 'form-control'
+            'class': 'form-input'
         })
     )
 
@@ -35,13 +36,13 @@ class SignUpForm(UserCreationForm):
     error_messages = {
         'password_mismatch': 'Пароли не совпадают'
     }
-
+    
     password1 = forms.CharField(
         label="Пароль",
         strip=False,
         widget=forms.PasswordInput(attrs={
             'placeholder': 'Пароль',
-            'class': 'form-control'
+            'class': 'form-input'
         })
     )
 
@@ -50,17 +51,23 @@ class SignUpForm(UserCreationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={
             'placeholder': 'Подтвердите пароль',
-            'class': 'form-control'
+            'class': 'form-input'
         }),
-        help_text='Введите тот же п0ароль, что и выше'
+        help_text='Пароли не совпадают'
     )
 
     class Meta:
         model = User
         fields = ('email', 'username')
         widgets = {
-            'email': forms.TextInput(attrs={'placeholder': 'Email'}),
-            'username': forms.TextInput(attrs={'placeholder': 'Username'})
+            'email': forms.TextInput(attrs={
+                'placeholder': 'Электронная почта',
+                'class': 'form-input'
+            }),
+            'username': forms.TextInput(attrs={
+                'placeholder': 'Имя пользователя',
+                'class': 'form-input'
+            })
         }
 
     def clean_email(self):

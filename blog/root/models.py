@@ -18,13 +18,9 @@ class Cat(models.Model):
 
     name = models.TextField(max_length=50)
 
-
-# class Sub_cat(models.Model):
-#     """Категории объявлений"""
-    
-#     name = models.ForeignKey(Cat, on_delete=models.CASCADE)
-#     sub_name = models.TextField(max_length=50)
-
+    class Meta:
+        verbose_name = 'Раздел'
+        verbose_name_plural = 'Разделы'
 
 class Adv(models.Model):
     """Обьявление пользователя"""
@@ -39,6 +35,10 @@ class Adv(models.Model):
         User, related_name='bookmark', blank=True
     )
 
+    class Meta:
+        verbose_name = 'Объявление'
+        verbose_name_plural = 'Объявления'
+
 class Prof(models.Model):
     """Модель пользователя"""
 
@@ -49,3 +49,7 @@ class Prof(models.Model):
     birth_date = models.DateField(blank=True, null=True)
     city = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'

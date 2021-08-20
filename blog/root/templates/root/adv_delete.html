@@ -1,10 +1,25 @@
+{% extends 'root/base.html' %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/adv_delete.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Удалить объявление</title>
+{% endblock title %}
+
+{% block content %}
 {% if adv.author != user %}
-  <h1>Удалить нельзя</h1>
+	<h2 class="head-delete">Нет доступа!</h2>
 {% else %}
-  <h1>Удалить?</h1>
-  <form method="POST">
-    {% csrf_token %}
-    <button type="submit">Удалить</button>
-  </form>
-  <a href="{% url 'root:advert' adv.id %}">Не надо</a>
+	<h2 class="head-delete">Удалить?</h2>
+	<form method="POST">
+		<div class="form-delete">
+		{% csrf_token %}
+			<button class="submit-delete" type="submit">Удалить</button>
+		</div>
+	</form>
+		<a class="link-delete" href="{% url 'root:advert' adv.id %}">Вернуться</a>
 {% endif %}
+{% endblock content %}

@@ -1,22 +1,22 @@
 {% extends 'root/base.html' %}
 {% load static %}
 
-{% block title %}
-  <title>Разделы</title>
-{% endblock title %}
-
 {% block style %}
-  <link rel="stylesheet" href="{% static 'root/css/cat.css' %}">
+	<link rel="stylesheet" href="{% static 'root/css/cat.css' %}">
 {% endblock style %}
+
+{% block title %}
+	<title>Разделы</title>
+{% endblock title %}
 
 {% block content %}
 {% if cat %}
-  <ul class="cat-list">
-    {% for category in cat %}
-      <li class="cat-item">          
-        <a class="cat-link" href="{% url 'root:category' category.id %}">{{ category.name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+	<ul class="cat-list">
+		{% for category in cat %}
+			<li class="cat-item">          
+				<a class="cat-link" href="{% url 'root:category' category.id %}">{{ category.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
 {% endif %}
 {% endblock content %}

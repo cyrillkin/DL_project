@@ -7,21 +7,26 @@
   color: #000;
 
   margin: 0;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .advert-img {
   padding-bottom: 5px;
 }
 
-.advert-link {
+.block-link {
+
+  
   margin: 0;
+  padding: 10px 0;
+}
 
-  background-color: #000;
+.advert-link {
+  margin: 0 auto;
   padding: 10px 20px;
-  border-radius: 30px;
 
-  margin: 0px;
+  background-color: #000;  
+  border-radius: 30px;
 
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
