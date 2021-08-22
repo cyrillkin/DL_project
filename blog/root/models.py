@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import DateField, TextField
 from django.db.models.fields.files import ImageField
-from django.utils import timezone
+from .validators import validate_birth_date
 
 
 def user_avatar_path(instance, filename):
@@ -31,9 +31,6 @@ class Adv(models.Model):
     description = models.TextField(max_length=500)
     photo = models.ImageField(upload_to=user_directory_path)
     date_pub = models.DateTimeField(auto_now_add=True)
-    bookmark = models.ManyToManyField(
-        User, related_name='bookmark', blank=True
-    )
 
     class Meta:
         verbose_name = 'Объявление'
@@ -46,7 +43,7 @@ class Prof(models.Model):
         User, on_delete=models.CASCADE, related_name='user_profile'
     )
     avatar = models.ImageField(upload_to=user_avatar_path)
-    birth_date = models.DateField(blank=True, null=True)
+    birth_date = models.DateField(blank=True, null=True, validators=[validate_birth_date])
     city = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 

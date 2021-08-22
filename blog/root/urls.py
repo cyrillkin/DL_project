@@ -14,7 +14,6 @@ urlpatterns = [
     path('adverts/<int:advert_id>/', views.AdvertView.as_view(), name='advert'),
     path('cat/', views.CategoryView.as_view(), name='cat'),
     path('category/<int:category_id>/', views.CategoryViewAdverts.as_view(), name='category'),
-    path('adverts/<int:advert_id>/bookmark/', views.AddRemoveView.as_view(), name='bookmark'),
     
     path('adv_create/', views.AdvertCreateView.as_view(), name='adv_create'),
     path('adverts/<int:advert_id>/adv_delete/', views.AdvertDeleteView.as_view(), name='adv_delete'),

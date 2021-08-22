@@ -1,0 +1,21 @@
+from typing import ClassVar
+from django.http import response
+from django.test import Client, TestCase, client
+from django.urls import reverse
+
+
+class TestCoreViews(TestCase):
+
+    # def setUp(self):
+    #     self.client = Client()
+    #     return super().setUp()
+
+    # def test_index_view(self):
+    #     client = Client()
+    #     response = client.get('/')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, 'РАЗДЕЛЫ')
+
+    # def test_edit_profile_view(self):
+    #     response = self.client.get(reverse('root:profile-edit', args=(1, )))
+    #     self.assertEqual(response.status_code, 404)

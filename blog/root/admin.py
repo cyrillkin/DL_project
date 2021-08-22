@@ -14,11 +14,10 @@ admin.site.unregister(User)
 class AdvAdmin(admin.ModelAdmin):
   fieldsets =[
     ('About', {'fields': ['author']}),
-    ('Whose did bookmarks', {'fields': ['bookmark']}),
     ('About advert', {'fields': ['name_cat', 'header', 'photo', 'description']}),
     ('Date information', {'fields': ['date_pub']})
   ]
-  readonly_fields = ['date_pub', 'bookmark']
+  readonly_fields = ['date_pub']
   list_display = ('author', 'header', 'name_cat', 'date_pub')
 
 
