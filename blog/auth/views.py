@@ -7,13 +7,15 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.generic import DetailView
 from django.views.generic.base import View
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .forms import LoginForm, UpdateProfileForm, SignUpForm
 from root.models import Prof
 
 
 class LoginView(DefaultLoginView):
+    """Регистрация пользователя"""
+
     template_name = 'my_auth/login.html'
     form_class = LoginForm
 
@@ -38,6 +40,8 @@ def logout_view(request):
 
 
 # class ProfileView(DetailView):
+#     """ Страница пользователя """
+
 #     model = Prof
 #     template_name = 'my_auth/profile.html'
 
@@ -53,6 +57,8 @@ def profile(request, user_id):
 
 
 class EditProfileView(UpdateView):
+    """Редактирование профиля пользователя"""
+
     model = Prof
     form_class = UpdateProfileForm
     template_name = 'my_auth/edit_profile.html'
@@ -92,3 +98,21 @@ class SignUpView(View):
             'registered': registered
             })
         return render(request, self.template_name, context)
+
+
+# class CreateProfileView(CreateView):
+#     model = Prof
+#     form_class = CreateProfileForm
+#     template_name = 'my_auth/create_profile.html'
+#     slug_field = "user_id"
+#     slug_url_kwarg = "user_id"
+
+#     def dispatch(self, request, *args, **kwargs):
+#         obj = self.get_object()
+#         if obj.user != request.user:
+#             raise Http404('Ошибка доступа')
+#         return super().dispatch(request, *args, **kwargs)
+
+#     def get_success_url(self):
+#         user_id = self.kwargs['user_id']
+#         return reverse('root:create-profile', args=(user_id, ))

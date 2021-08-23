@@ -2,10 +2,9 @@ import datetime
 from django.core.exceptions import ValidationError
 
 
-def validate_birth_date(value):
+def validate_num(latin):
     """
-    Проверяет корректность даты рождения
-    :param_value: Дата рождения (date)
+    Проверяет наличие цифр
     """
-    if value > datetime.datetime.now().date():
-        raise ValidationError('Дата не может быть больше текущей')
+    if latin.isalnum == True:
+        raise ValidationError('Присутствуют цифры')

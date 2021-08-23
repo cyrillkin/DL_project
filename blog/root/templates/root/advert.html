@@ -11,7 +11,7 @@
 
 {% block content %}
 	<p class="advert-text">Объявление #{{ advert.id }}</p>
-	<p class="advert-text">Автор объявления: {{ advert.author }}</p>
+	<a class="author-link" href="{% url 'root:profile' advert.author.id %}">{{ advert.author }}</a>
 	<p class="advert-text">Заголовок: {{ advert.header }}</p>
 	<p class="advert-text">Описание: {{ advert.description }}</p>
 	<img class="advert-img" src="{{ advert.photo.url }}" alt="{{ advert.header }}">
@@ -22,14 +22,6 @@
 			<a class="advert-link" href="{% url 'root:adv_edit' advert.id %}">Редактировать объявление</a>
 			<a class="advert-link" href="{% url 'root:adv_delete' advert.id %}">Удалить объявление</a>
 		</div>
-			<!-- <form method="POST" action="{% url 'root:bookmark' advert.id %}">
-			{% csrf_token %}
-				{% if advert.author in user.user_profile.bookmark.all %}
-					<button type="submit">Удалить из закладок</button>
-				{% else %}
-					<button type="submit">Добавить в закладки</button>
-				{% endif %}
-			</form> -->
 		{% endif %}
 	{% endif %}
 {% endblock content %}

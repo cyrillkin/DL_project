@@ -113,24 +113,5 @@ class AdvertUpdateView(UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        advert_id = self.kwargs['adv_id']
-        return reverse('root:adv', args=(advert_id, ))
-
-
-class AddRemoveView(View):
-    """ Представление добавления в закладки """
-
-    def post(self, request, advert_id, *args, **kwargs):
-        advert = get_object_or_404(Adv, id=advert_id)
-        if advert in request.advert.bookmark.bookmark.all():
-            request.advert.bookmark.bookmark.remove(advert)
-        else:
-            request.advert.bookmark.bookmark.add(advert)
-        return redirect(request.META.get('HTTP_REFERER'), request)
-
-
-class FavouriteBookmarkView(View):
-    """ Представление избранных объявлений """
-
-    model = Adv
-    template_name = 'root/fav_book.html'
+        advert_id = self.kwargs['advert_id']
+        return reverse('root:adv_edit', args=(advert_id, ))

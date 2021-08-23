@@ -1,9 +1,27 @@
-<form method="POST" enctype="multipart/form-data">
-<div class="form">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Принять изменения</button>
-</div>
-</form>
+{% extends 'root/base.html' %}
+{% load static %}
 
-<a href="{% url 'root:adv_delete' advert.id %}">Удалить пост</a>
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/adv_edit.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Разместить объявление</title>
+{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<form method="POST" enctype="multipart/form-data">
+		<div class="form-label">
+			<div class="form">
+			{% csrf_token %}
+			{{ form }}
+				<button class="form-btn" type="submit">Принять изменения</button>
+			</div>
+		</div>
+	</form>
+		<a class="form-btn" href="{% url 'root:adv_delete' adv.id %}">Удалить пост</a>
+{% else %}
+	<a class="adv-edit-link" href="{% url 'root:login' %}">Авторизируйтесь!</a>
+{% endif %}
+{% endblock content %}

@@ -69,3 +69,12 @@
 .form-btn:active {
   background: #afaaa1;
 }
+
+.adv-create-link {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000;
+}

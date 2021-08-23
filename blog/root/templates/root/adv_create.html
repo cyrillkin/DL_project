@@ -10,13 +10,17 @@
 {% endblock title %}
 
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-	<div class="form-label">
-		<div class="form">
-		{% csrf_token %}
-		{{ form }}
-			<button class="form-btn" type="submit">Опубликовать</button>
+{% if user.is_authenticated %}
+	<form method="POST" enctype="multipart/form-data">
+		<div class="form-label">
+			<div class="form">
+			{% csrf_token %}
+			{{ form }}
+				<button class="form-btn" type="submit">Опубликовать</button>
+			</div>
 		</div>
-	</div>
-</form>
+	</form>
+{% else %}
+	<a class="adv-create-link" href="{% url 'root:login' %}">Авторизируйтесь!</a>
+{% endif %}
 {% endblock content %}

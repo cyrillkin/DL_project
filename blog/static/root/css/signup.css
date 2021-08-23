@@ -1,6 +1,14 @@
-head-signup {
+.head-signup {
   display: flex;
   justify-content: center;
+}
+
+.signup-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 150px;
 }
 
 .content {
@@ -13,7 +21,6 @@ head-signup {
 
   .form-label {
     display: flex;
-    align-items: center;
     justify-content: center;
     background-color: #d1cdcd;
     width: 300px;

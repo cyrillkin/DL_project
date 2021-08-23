@@ -1,7 +1,24 @@
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {% for field in form %}
-    <p>{{ field }}</p>
-  {% endfor %}
-  <button type="submit">Редактировать</button>
+{% extends 'root/base.html' %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/profile.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Редактировать профиль</title>
+{% endblock title %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data">	
+	<div class="form-label">
+		<div class="form">		
+			{% csrf_token %}
+			{% for field in form %}
+				<p>{{ field }}</p>
+			{% endfor %}
+				<button class="form-btn" type="submit">Редактировать</button>
+		</div>
+	</div>
 </form>
+{% endblock content %}

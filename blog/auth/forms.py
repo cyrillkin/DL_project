@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 from django.db.models.fields import DateField
 from django.forms import fields, widgets
 from django.forms.models import ModelForm
+from django.views.generic import DetailView
+from django.shortcuts import get_object_or_404
 
 from root.models import Prof
 
@@ -36,7 +38,7 @@ class SignUpForm(UserCreationForm):
     error_messages = {
         'password_mismatch': 'Пароли не совпадают'
     }
-    
+
     password1 = forms.CharField(
         label="Пароль",
         strip=False,
@@ -80,11 +82,11 @@ class SignUpForm(UserCreationForm):
 
 class UpdateProfileForm(forms.ModelForm):
     birth_date = forms.DateField(
-        label="Дата рождения",
-        input_formats=['%d-%m-%Y'],
-        widget=forms.DateInput(format=('%d-%m-%Y'), attrs={
-            'class': 'form-control',
-            'placeholder': 'Дата рождения в формате dd-mm-yyyy'
+    label="Дата рождения",
+    input_formats=['%d-%m-%Y'],
+    widget=forms.DateInput(format=('%d-%m-%Y'), attrs={
+        'class': 'form-input',
+        'placeholder': 'Дата рождения в формате dd-mm-yyyy'
         })
     )
 
@@ -95,4 +97,19 @@ class UpdateProfileForm(forms.ModelForm):
             'avatar': 'Фото',
             'city': 'Город',
             'description': 'Обо мне'
+        }
+
+        widgets = {
+            'city': forms.Textarea(attrs={
+                'class': 'form-input',
+                'placeholder': 'Город',
+                'rows': 1,
+                'cols': 30
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-input',
+                'placeholder': 'Описание',
+                'rows': 5,
+                'cols': 30
+            })
         }

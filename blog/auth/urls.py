@@ -7,7 +7,7 @@ from django.urls.base import reverse_lazy
 
 from . import views
 from .views import (
-  SignUpView, LoginView, logout_view, EditProfileView
+  SignUpView, LoginView, logout_view, EditProfileView,
 )
 
 
@@ -16,8 +16,9 @@ urlpattens = [
   path('login/', LoginView.as_view(), name='login'),
   path('logout/', logout_view, name='logout'),
   # path('profile/<int:user_id>', ProfileView.as_view(), name='profile'),
-  path('profile/<int:user_id>', views.profile, name='profile'),
+  path('profile/<int:user_id>/', views.profile, name='profile'),
   path('profile/<int:user_id>/edit/', EditProfileView.as_view(), name='profile-edit'),
+  # path('profile/<int:user_id>/create-profile/', CreateProfileView.as_view(), name='create-profile'),
   
   path('password_reset/', PasswordResetView.as_view(
     template_name='my_auth/password_reset.html',

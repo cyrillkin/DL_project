@@ -18,7 +18,7 @@ urlpatterns = [
     path('adv_create/', views.AdvertCreateView.as_view(), name='adv_create'),
     path('adverts/<int:advert_id>/adv_delete/', views.AdvertDeleteView.as_view(), name='adv_delete'),
     path('adverts/<int:advert_id>/adv_delete_success/', TemplateView.as_view(template_name='root/delete_success.html'), name='delete-adv-success'),
-    path('adverts/<int:advert_id>/adv_edit/', views.AdvertCreateView.as_view(), name='adv_edit'),
+    path('adverts/<int:advert_id>/adv_edit/', views.AdvertUpdateView.as_view(), name='adv_edit'),
 ]
 
 urlpatterns += auth_patterns

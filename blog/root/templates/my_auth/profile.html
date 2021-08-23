@@ -1,8 +1,24 @@
-<h1>{{ profile.user_id }}</h1>
-<h2>{{ profile.city }}</h2>
-<h2>{{ profile.description }}</h2>
-<h2>Дата рождения: {{ profile.birth_date }}</h2>
-<h2><img src="{{ profile.avatar.url }}" style="width: 200px; height: 200px"></h2>
+{% extends 'root/base.html' %}
+{% load static %}
+
+{% block style %}
+	<link rel="stylesheet" href="{% static 'root/css/profile.css' %}">
+{% endblock style %}
+
+{% block title %}
+	<title>Профиль</title>
+{% endblock title %}
+
+{% block content %}
+	<div class="profile">
+		<h1>ID: {{ profile.id }}</h1>
+		<h2>Город: {{ profile.city }}</h2>
+		<h2>Описание: {{ profile.description }}</h2>
+		<h2>Дата рождения: {{ profile.birth_date }}</h2>
+		<h2>Аватар: <img src="{{ profile.avatar.url }}" style="width: 200px; height: 200px"></h2>
+	</div>
+
 {% if user.id == profile.user.id %}
   <a href="{% url 'root:profile-edit' profile.user.id %}">Редактировать профиль</a>
 {% endif %}
+{% endblock content %}

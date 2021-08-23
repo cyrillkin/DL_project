@@ -19,7 +19,7 @@ class AdvForm(forms.ModelForm):
 			'header': forms.Textarea(attrs={
 				'class': 'form-input',
 				'placeholder': 'Заголовок',
-				'rows':1
+				'rows': 1
 			}),
 			'name_cat': forms.Select(attrs={
 				'class': 'form-input',
